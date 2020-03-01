@@ -1,0 +1,58 @@
+{
+  "participants": [
+    {
+      "name": "a"
+    },
+    {
+      "name": "b"
+    }
+  ],
+  "messages": [
+    {
+      "sender_name": "a",
+      "timestamp_ms": 1581245686219,
+      "content": "more more more moreeee",
+      "type": "Generic"
+    },
+    {
+      "sender_name": "b",
+      "timestamp_ms": 1581241656546,
+      "content": "O",
+      "type": "Generic"
+    },
+    {
+      "sender_name": "a",
+      "timestamp_ms": 1581241655139,
+      "content": "Y",
+      "type": "Generic"
+    },
+    {
+      "sender_name": "b",
+      "timestamp_ms": 1581241653783,
+      "content": "E",
+      "type": "Generic"
+    },
+    {
+      "sender_name": "a",
+      "timestamp_ms": 1581011174593,
+      "content": "and I can imagine you only",
+      "type": "Generic"
+    },
+    {
+      "sender_name": "b",
+      "timestamp_ms": 1581005318780,
+      "content": "i can imagine you only",
+      "type": "Generic"
+    }
+    {
+      "sender_name": "a",
+      "timestamp_ms": 1540795635219,
+      "content": "Ye accha nhi kiya tumne :P You have unraveled the secret which was kept hidden from my friends since centuries ;)",
+      "type": "Generic"
+    }
+  ],
+  "title": "b",
+  "is_still_participant": true,
+  "thread_type": "Regular",
+  "thread_path": "a"
+}
