@@ -1,0 +1,9 @@
+Sticker
+sticker
+Sent
+type
+transfer
+File
+IMAGE
+VIDEO
+gif
