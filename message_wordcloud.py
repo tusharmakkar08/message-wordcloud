@@ -1,6 +1,7 @@
 __author__ = 'Tushar Makkar <tmakkar@eightfold.ai>'
 
 import collections
+import sys
 import json
 import logging
 import os
@@ -133,7 +134,7 @@ class MessageWordCloud:
                 self._stopwords.extend(f.readlines())
         self._stopwords = set([i.strip().lower() for i in self._stopwords])
 
-    def convert_to_frequency(self, all_messages, msg_category, chop_off_num=2):
+    def convert_to_frequency(self, all_messages, msg_category, chop_off_num):
         data_dict = collections.defaultdict(lambda: collections.defaultdict(int))
         min_length = 10 ** 10
         for data_msg_category in all_messages:
@@ -162,21 +163,26 @@ class MessageWordCloud:
         with open('final_data.js', 'w') as f:
             f.write(main_string)
 
-    def build_final_data_js_file(self, participants_ig_name):
+    def build_final_data_js_file(self, participants_ig_name, freq_chop_off_num=2):
         all_messages = {}
         for type_of_message in self._class_map:
+            self._logger.info("Getting messages for %s" % type_of_message)
             all_messages[type_of_message] = self._class_map[type_of_message](self._data_map[type_of_message]).convert_to_messages(
                 participants=participants_ig_name)
-        freq_map = self.convert_to_frequency(all_messages, 'all')
+        freq_map = self.convert_to_frequency(all_messages, 'all', freq_chop_off_num)
         self._make_js(freq_map)
 
 
 if __name__ == '__main__':
     _logger = logging.getLogger()
+    _logger.setLevel(logging.DEBUG)
+    _ch = logging.StreamHandler(sys.stdout)
+    _ch.setFormatter(logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s"))
+    _logger.addHandler(_ch)
     _data_map = {
-        MessageCategory.FACEBOOK: 'data/fb.json',
-        MessageCategory.HIKE: 'data/hike.txt',
-        MessageCategory.INSTAGRAM: 'data/ig.json',
-        MessageCategory.WHATSAPP: 'data/wp.txt'
+        MessageCategory.FACEBOOK: 'sample_data/fb.json',
+        MessageCategory.HIKE: 'sample_data/hike.txt',
+        MessageCategory.INSTAGRAM: 'sample_data/ig.json',
+        MessageCategory.WHATSAPP: 'sample_data/wp.txt'
     }
-    MessageWordCloud(_logger, _data_map).build_final_data_js_file(['a', 'b'])
+    MessageWordCloud(_logger, _data_map).build_final_data_js_file(['a', 'b'], 0)
