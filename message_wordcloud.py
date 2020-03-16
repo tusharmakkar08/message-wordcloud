@@ -1,11 +1,12 @@
 __author__ = 'Tushar Makkar <tmakkar@eightfold.ai>'
 
+import argparse
 import collections
-import sys
 import json
 import logging
 import os
 import os.path
+import sys
 
 from enum import Enum
 
@@ -86,7 +87,7 @@ class InstagramMessageMedium(MessageMedium):
         data = self._read_file()
         actual_data = None
         for i in data:
-            if participants == i['participants']:
+            if set(participants) == set(i['participants']):
                 actual_data = i
                 break
         list_of_messages = []
@@ -179,10 +180,14 @@ if __name__ == '__main__':
     _ch = logging.StreamHandler(sys.stdout)
     _ch.setFormatter(logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s"))
     _logger.addHandler(_ch)
+    args = argparse.ArgumentParser(description='Argument parser for wordcloud')
+    args.add_argument('--ig_names', help='Instagram name list', type=str, required=True, nargs=2)
+    args.add_argument('--folder', help='Folder where files are present', type=str, required=True)
+    args = args.parse_args()
     _data_map = {
-        MessageCategory.FACEBOOK: 'sample_data/fb.json',
-        MessageCategory.HIKE: 'sample_data/hike.txt',
-        MessageCategory.INSTAGRAM: 'sample_data/ig.json',
-        MessageCategory.WHATSAPP: 'sample_data/wp.txt'
+        MessageCategory.FACEBOOK: os.path.join(args.folder, 'fb.json'),
+        MessageCategory.HIKE: os.path.join(args.folder, 'hike.txt'),
+        MessageCategory.INSTAGRAM: os.path.join(args.folder, 'ig.json'),
+        MessageCategory.WHATSAPP: os.path.join(args.folder, 'wp.txt')
     }
-    MessageWordCloud(_logger, _data_map).build_final_data_js_file(['a', 'b'], 0)
+    MessageWordCloud(_logger, _data_map).build_final_data_js_file(args.ig_names, 0)

@@ -4,6 +4,25 @@ Wordcloud from messages in all the popular social media.
 
 #### Running code instructions
 
+    python message_wordcloud.py --folder sample_data/ --ig_names "a" "b"
+
+Help:
+
+    usage: message_wordcloud.py [-h] --ig_names IG_NAMES IG_NAMES --folder FOLDER
+    
+    Argument parser for wordcloud
+    
+    optional arguments:
+      -h, --help            show this help message and exit
+      --ig_names IG_NAMES IG_NAMES
+                            Instagram name list
+      --folder FOLDER       Folder where files are present
+
+Currently, we are expecting file names as follows:
+* Facebook - `fb.json`
+* Hike - `hike.txt`
+* Instagram - `ig.json`
+* Whatsapp - `wp.txt`
 
 #### Downloading data instructions
 
@@ -34,6 +53,9 @@ Wordcloud from messages in all the popular social media.
 
 #### Sample Result:
 
+You can find the result [here](http://tusharmakkar08.github.io/wordcloud.html). 
+
+Sample screenshot: 
 ![alt text](wc_images/wordcloud.png)
 
 #### References
