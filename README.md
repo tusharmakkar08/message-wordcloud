@@ -1,6 +1,19 @@
 # message-wordcloud
 
-Wordcloud from messages in all the popular social media.
+Wordcloud from messages in all the popular social media messaging platform.
+Right now it supports:
+
+- Facebook
+- Whatsapp
+- Instagram
+- Hike
+
+#### Sample Result:
+
+You can find the result [here](http://tusharmakkar08.github.io/wordcloud.html). 
+
+Sample screenshot: 
+![alt text](wc_images/wordcloud.png)
 
 #### Running code instructions
 
@@ -51,12 +64,6 @@ Currently, we are expecting file names as follows:
 * Go to profile of the chat and click on export.
 ![alt text](wc_images/hike1.jpg)
 
-#### Sample Result:
-
-You can find the result [here](http://tusharmakkar08.github.io/wordcloud.html). 
-
-Sample screenshot: 
-![alt text](wc_images/wordcloud.png)
 
 #### References
 
